@@ -36,7 +36,7 @@ The basic syntax of a `Promise` is as follows:
 
 ```js
 new Promise(resolve => {
-	resolve('Return Value');
+  resolve('Return Value');
 });
 ```
 
@@ -59,17 +59,17 @@ We can attach code to execute upon the resolution of a `Promise` using the
 
 ```js
 const myFirstPromise = new Promise(resolve => {
-	// We call resolve(...) when what we we're doing asynchronously was successful
-	// In this example, we use setTimeout(...) to simulate asynchronous code.
-	setTimeout(() => {
-		resolve('Success!'); // Yay! Everything went well!
-	}, 1000);
+  // We call resolve(...) when what we we're doing asynchronously was successful
+  // In this example, we use setTimeout(...) to simulate asynchronous code.
+  setTimeout(() => {
+    resolve('Success!'); // Yay! Everything went well!
+  }, 1000);
 });
 
 myFirstPromise.then(returnValueOfPromise => {
-	// returnValueOfPromise is whatever we passed in the resolve(...) function above.
-	console.log('Yay! ' + returnValueOfPromise);
-	// LOG: Yay! Success!
+  // returnValueOfPromise is whatever we passed in the resolve(...) function above.
+  console.log('Yay! ' + returnValueOfPromise);
+  // LOG: Yay! Success!
 });
 ```
 
@@ -85,11 +85,11 @@ is used to handle _unsuccessful_ results.
 
 ```js
 const mySecondPromise = new Promise((resolve, reject) => {
-	// We call reject(...) when what we we're doing asynchronously was NOT successful
+  // We call reject(...) when what we we're doing asynchronously was NOT successful
 
-	setTimeout(function() {
-		reject('Failure!'); // Yay! Everything went well!
-	}, 1000);
+  setTimeout(function() {
+    reject('Failure!'); // Yay! Everything went well!
+  }, 1000);
 });
 ```
 
@@ -103,8 +103,8 @@ available to us by using `then()`. With `reject()`, we use a different function:
 
 ```js
 mySecondPromise.catch(returnValueOfUnsuccessfulPromise => {
-	// returnValueOfUnsuccessfulPromise is whatever was passed into the reject(...) function
-	console.log('Oh no! ' + returnValueOfUnsuccessfulPromise);
+  // returnValueOfUnsuccessfulPromise is whatever was passed into the reject(...) function
+  console.log('Oh no! ' + returnValueOfUnsuccessfulPromise);
 });
 ```
 
@@ -114,23 +114,23 @@ and often see this when using
 
 ```js
 const myThirdPromise = new Promise((resolve, reject) => {
-	setTimeout(() => {
-		let randomNumber = Math.random();
-		if (randomNumber > 0.5) {
-			resolve('Success!'); // Yay! Everything went well!
-		} else {
-			reject('Failure!'); // No! Everything is terrible!
-		}
-	}, 1000);
+  setTimeout(() => {
+    let randomNumber = Math.random();
+    if (randomNumber > 0.5) {
+      resolve('Success!'); // Yay! Everything went well!
+    } else {
+      reject('Failure!'); // No! Everything is terrible!
+    }
+  }, 1000);
 });
 
 myThirdPromise
-	.then(returnValueOfSuccessfulPromise => {
-		console.log('Yay! ' + returnValueOfSuccessfulPromise);
-	})
-	.catch(returnValueOfUnsuccessfulPromise => {
-		console.log('No! ' + returnValueOfUnsuccessfulPromise);
-	});
+  .then(returnValueOfSuccessfulPromise => {
+    console.log('Yay! ' + returnValueOfSuccessfulPromise);
+  })
+  .catch(returnValueOfUnsuccessfulPromise => {
+    console.log('No! ' + returnValueOfUnsuccessfulPromise);
+  });
 ```
 
 If you run the above code in a browser console, it will randomly fail half of
@@ -151,14 +151,14 @@ declared it, it will show that it is still pending:
 
 ```js
 const myThirdPromise = new Promise((resolve, reject) => {
-	setTimeout(() => {
-		let randomNumber = Math.random();
-		if (randomNumber > 0.5) {
-			resolve('Success!'); // Yay! Everything went well!
-		} else {
-			reject('Failure!'); // No! Everything is terrible!
-		}
-	}, 1000);
+  setTimeout(() => {
+    let randomNumber = Math.random();
+    if (randomNumber > 0.5) {
+      resolve('Success!'); // Yay! Everything went well!
+    } else {
+      reject('Failure!'); // No! Everything is terrible!
+    }
+  }, 1000);
 });
 console.log(myThirdPromise);
 // LOG: Promise {<pending>}
@@ -179,7 +179,7 @@ our `fetch()`:
 
 ```js
 fetch(`http://api.open-notify.org/astros.json`).then(response =>
-	response.json()
+  response.json()
 );
 ```
 
@@ -193,10 +193,10 @@ other like this:
 
 ```js
 fetch(`http://api.open-notify.org/astros.json`)
-	.then(response => response.json())
-	.then(json => {
-		console.log(json);
-	});
+  .then(response => response.json())
+  .then(json => {
+    console.log(json);
+  });
 ```
 
 Here, `fetch()` returns a `Promise`, which, once resolved, returns `response`.
